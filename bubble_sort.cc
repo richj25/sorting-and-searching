@@ -1,13 +1,7 @@
 #include "sort.h"
+#include <algorithm>
 
-typedef std::list<int>::iterator listIter;
 
-void swap(listIter first, listIter second)
-{
-	int temp(*first);
-	*first = *second;
-	*second = temp;
-}
 
 void bubbleSort(std::list<int>& file)
 {
@@ -22,7 +16,7 @@ void bubbleSort(std::list<int>& file)
 		{
 			if (*iter1 > *iter2)
 			{
-				swap(iter1, iter2);
+				std::swap(*iter1, *iter2);
 				swapPerformed = true;
 			}
 			iter1++;

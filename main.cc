@@ -1,5 +1,5 @@
 #include "file_gen.h"
-#include "sort.h"
+#include "sort_api.h"
 #include <iostream>
 
 int main(int argc, char **argv)

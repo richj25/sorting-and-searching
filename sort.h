@@ -4,10 +4,13 @@
 #ifndef SORT_H
 #define SORT_H
 
+typedef std::list<int>::iterator listIter;
+
+#define BUBBLESORT 1
+#define QUICKSORT  2
+
 void getListOfSortMethods(std::list<std::string>& sortMethods);
 
-void callSortMethod();
+void callSortMethod(int method, std::list<int> list);
 
-void bubbleSort(std::list<int>& list);
-
-#endif
+#endif /* SORT_H */

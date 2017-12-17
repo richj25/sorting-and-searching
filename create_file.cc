@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		std::cout << "usage: create_file <path>\n" << std::endl;
+		std::cout << "usage: create_file <path> <number of lines>\n" << std::endl;
 	}
 	else
 	{
