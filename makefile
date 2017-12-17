@@ -3,7 +3,9 @@ LD=/usr/bin/ld
 CFLAGS= -g -std=c++11 -Wall
 SHARED_LIB_PATH=$(CURDIR)
 
-SORT_OBJS = bubble_sort.o
+SORT_OBJS = bubble_sort.o \
+			quicksort.o \
+			sort.o
 
 all: libsort.so libfilegen.so create_file sorter
 
@@ -16,6 +18,11 @@ sorter: libsort.so libfilegen.so main.cc
 libfilegen.so: file_gen.cc file_gen.h
 	$(CC) $(CFLAGS) -fPIC -shared -o libfilegen.so file_gen.cc
 
+sort.o: sort.cc sort_api.h
+	$(CC) $(CFLAGS) -fPIC -c -o sort.o sort.cc
+
+quicksort.o: quicksort.cc
+	$(CC) $(CFLAGS) -fPIC -c -o quicksort.o quicksort.cc
 	
 bubble_sort.o: bubble_sort.cc 
 	$(CC) $(CFLAGS) -fPIC -c -o bubble_sort.o bubble_sort.cc

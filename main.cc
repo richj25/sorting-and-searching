@@ -6,21 +6,27 @@ int main(int argc, char **argv)
 {
 	std::list<int> randomList;
 
-	if (argc == 2)
+	if (argc != 2)
+	{
+		std::cout << "Usage: sorter <file path>" << std::endl;
+	}
+	else
 	{
 		readFile(argv[1], randomList);
 
-		std::list<int>::iterator iter = randomList.begin();
+		MethodMap sortMethods;
+		getSortMethods(sortMethods);
+
+		//std::list<std::string>::iterator methodIter = sortMethods.begin();
+		//for (;)
+
 
 		bubbleSort(randomList);
 
+		std::list<int>::iterator iter = randomList.begin();
 		for (; iter != randomList.end(); iter++)
 		{
 			std::cout << *iter << std::endl;
 		}
-	}
-	else
-	{
-		std::cout << "Usage: sorter <file path" << std::endl;
 	}
 }

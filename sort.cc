@@ -1,12 +1,22 @@
-#include "sort.h"
+#include "sort_api.h"
+#include <iostream>
 
-void getListOfSortMethods(std::list<std::string>& sortMethods)
+void getSortMethods(MethodMap& sortMethods)
 {
-	sortMethods.push_back("Bubble Sort");
-	sortMethods.push_back("Quicksort");
+	sortMethods[BUBBLESORT] = "Bubble Sort";
+	sortMethods[QUICKSORT] = "Quicksort";
 }
 
 void callSortMethod(int method, std::list<int> list)
 {
+	switch (method)
+	{
+		case BUBBLESORT: bubbleSort(list);
+						 break;
 
+		case QUICKSORT: quickSort(list);
+						 break;
+
+		default: std::cout << "This is not a recognized method." << std::endl;
+	}
 }
