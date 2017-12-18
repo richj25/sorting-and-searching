@@ -17,9 +17,11 @@ int main(int argc, char **argv)
 		MethodMap sortMethods;
 		getSortMethods(sortMethods);
 
-		//std::list<std::string>::iterator methodIter = sortMethods.begin();
-		//for (;)
-
+		MethodMap::iterator methodIter = sortMethods.begin();
+		for (; methodIter != sortMethods.end(); methodIter++)
+		{
+			std::cout << methodIter->first << "    " << methodIter->second << std::endl;
+		}
 
 		bubbleSort(randomList);
 
