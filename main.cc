@@ -39,7 +39,10 @@ int main(int argc, char **argv)
 	}
 	else
 	{
+		int listSize;
+
 		readFile(argv[1], randomList);
+		listSize = randomList.size();
 
 		StringList sortMethods;
 		getSortMethods(sortMethods);
@@ -55,7 +58,12 @@ int main(int argc, char **argv)
 
 		while (methodNumber != 0)
 		{
-			callSortMethod(methodMap[methodNumber],randomList);
+			double elapsedTime;
+			StringList
+			callSortMethod(methodMap[methodNumber], randomList, sortedList, elapsedTime);
+
+			std::cout << "Sort method - " << methodMap[methodNumber] << std::endl;
+			std::cout << "Sorted " << listSize << " integers in " << elapsedTime << "seconds." << std::endl;
 
 			printMethodList(sortMethods);
 

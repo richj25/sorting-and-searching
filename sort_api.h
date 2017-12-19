@@ -7,12 +7,8 @@
 typedef std::list<std::string> StringList;
 typedef std::list<int> IntegerList;
 
-void bubbleSort(IntegerList& list);
-
-void quickSort(IntegerList& list);
-
 void getSortMethods(StringList& sortMethods);
 
-void callSortMethod(const std::string method, IntegerList& list);
+void callSortMethod(const std::string method, IntegerList& list, double& elapsedTime);
 
 #endif
