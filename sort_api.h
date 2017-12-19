@@ -1,21 +1,18 @@
 #include <list>
 #include <string>
-#include <map>
 
 #ifndef SORT_API_H
 #define SORT_API_H
 
-#define BUBBLESORT 1
-#define QUICKSORT  2
+typedef std::list<std::string> StringList;
+typedef std::list<int> IntegerList;
 
-typedef std::map<int, std::string> MethodMap;
+void bubbleSort(IntegerList& list);
 
-void bubbleSort(std::list<int>& list);
+void quickSort(IntegerList& list);
 
-void quickSort(std::list<int> list);
+void getSortMethods(StringList& sortMethods);
 
-void getSortMethods(MethodMap& sortMethods);
-
-void callSortMethod(int method, std::list<int> list);
+void callSortMethod(const std::string method, IntegerList& list);
 
 #endif

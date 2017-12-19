@@ -1,16 +1,16 @@
-#include "sort.h"
+#include "sort_api.h"
 #include <algorithm>
 
 
 
-void bubbleSort(std::list<int>& file)
+void bubbleSort(IntegerList& file)
 {
 	bool swapPerformed;
 	do
 	{
 		swapPerformed = false;
-		listIter iter2 = file.begin();
-		listIter iter1 = iter2++;
+		IntegerList::iterator iter2 = file.begin();
+		IntegerList::iterator iter1 = iter2++;
 
 		while (iter2 != file.end())
 		{

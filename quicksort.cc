@@ -1,7 +1,7 @@
-#include "sort.h"
-#include <algorithm>
+#include "sort_api.h"
+#include <iostream>
 
-void quickSort(std::list<int> list)
+void quickSort(IntegerList& list)
 {
-
+	std::cout << "Called quicksort" << std::endl;
 }
