@@ -5,8 +5,8 @@
 #ifndef SORT_H
 #define SORT_H
 
-void bubbleSort(IntegerList& list);
+void bubbleSort(Container& list);
 
-void quickSort(IntegerList& list);
+void quickSort(Container& list);
 
 #endif /* SORT_H */

@@ -21,10 +21,10 @@ libfilegen.so: file_gen.cc file_gen.h
 sort.o: sort.cc sort_api.h
 	$(CC) $(CFLAGS) -fPIC -c -o sort.o sort.cc
 
-quicksort.o: quicksort.cc
+quicksort.o: quicksort.cc sort_api.h
 	$(CC) $(CFLAGS) -fPIC -c -o quicksort.o quicksort.cc
 	
-bubble_sort.o: bubble_sort.cc 
+bubble_sort.o: bubble_sort.cc sort_api.h
 	$(CC) $(CFLAGS) -fPIC -c -o bubble_sort.o bubble_sort.cc
 
 libsort.so: $(SORT_OBJS)

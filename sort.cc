@@ -12,7 +12,7 @@ void getSortMethods(StringList& sortMethods)
 	sortMethods.push_back(QUICKSORT);
 }
 
-void callSortMethod(const std::string method, IntegerList& list, double& elapsedTime)
+void callSortMethod(const std::string method, Container& list, double& elapsedTime)
 {
 	if (method == BUBBLESORT)
 	{
@@ -25,10 +25,11 @@ void callSortMethod(const std::string method, IntegerList& list, double& elapsed
 	}
 	else if (method == QUICKSORT)
 	{
+		clock_t begin = clock();
+
 		quickSort(list);
-	}
-	else
-	{
-		std::cout << "This is not a recognized method." << std::endl;
+
+		clock_t end = clock();
+		elapsedTime = double(end - begin) / CLOCKS_PER_SEC;
 	}
 }

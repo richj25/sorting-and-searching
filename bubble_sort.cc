@@ -3,16 +3,16 @@
 
 
 
-void bubbleSort(IntegerList& file)
+void bubbleSort(Container& randomIntegers)
 {
 	bool swapPerformed;
 	do
 	{
 		swapPerformed = false;
-		IntegerList::iterator iter2 = file.begin();
-		IntegerList::iterator iter1 = iter2++;
+		Container::iterator iter2 = randomIntegers.begin();
+		Container::iterator iter1 = iter2++;
 
-		while (iter2 != file.end())
+		while (iter2 != randomIntegers.end())
 		{
 			if (*iter1 > *iter2)
 			{
@@ -22,7 +22,6 @@ void bubbleSort(IntegerList& file)
 			iter1++;
 			iter2++;
 		}
-
 	}
 	while (swapPerformed);
 }
