@@ -13,7 +13,7 @@ create_file: libfilegen.so
 	$(CC) -L$(SHARED_LIB_PATH) -l filegen create_file.cc -o create_file
 
 sorter: libsort.so libfilegen.so main.cc
-	$(CC) -L$(SHARED_LIB_PATH) -lsort -lfilegen main.cc -o sorter
+	$(CC)  $(CFLAGS) -L$(SHARED_LIB_PATH) -lsort -lfilegen main.cc -o sorter
 		
 libfilegen.so: file_gen.cc file_gen.h
 	$(CC) $(CFLAGS) -fPIC -shared -o libfilegen.so file_gen.cc

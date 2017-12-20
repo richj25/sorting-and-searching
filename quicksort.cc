@@ -13,11 +13,11 @@ void printList(const Container& list)
 void qSort(Container& list, Container::iterator pivot, Container::iterator leftMark, Container::iterator rightMark)
 {
 	printList(list);
-	std::swap(*pivot, *rightMark);
 	std::cout << "pivot = " << *pivot << std::endl;
 	std::cout << "leftmark = " << *leftMark << std::endl;
 	std::cout << "rightMark = " << *rightMark << std::endl;
 
+	char input;
 	while (rightMark >= leftMark)
 	{
 		while (*leftMark < *pivot)
@@ -30,7 +30,14 @@ void qSort(Container& list, Container::iterator pivot, Container::iterator leftM
 			rightMark++;
 		}
 
+		std::cout << "swapping " << *leftMark << " with " << *rightMark << std::endl;
+
 		std::swap(*leftMark, *rightMark);
+		printList(list);
+		std::cout << "pivot = " << *pivot << std::endl;
+		std::cout << "leftmark = " << *leftMark << std::endl;
+		std::cout << "rightMark = " << *rightMark << std::endl << std::endl;
+		std::cin >> input;
 	}
 
 	std::swap(*pivot, *rightMark);
@@ -47,5 +54,9 @@ void quickSort(Container& list)
 	Container::iterator rightMark = list.end() -1;
 	Container::iterator leftMark = pivot + 1;;
 
+	std::cout << "pivot = " << *pivot << std::endl;
+	std::cout << "leftmark = " << *leftMark << std::endl;
+	std::cout << "rightMark = " << *rightMark << std::endl;
+	std::cout << "calling qsort" << std::endl;
 	qSort(list, pivot, leftMark, rightMark);
 }
