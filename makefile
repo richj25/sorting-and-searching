@@ -7,16 +7,10 @@ SORT_OBJS = bubble_sort.o \
 			quicksort.o \
 			sort.o
 
-all: libsort.so libfilegen.so create_file sorter
+all: libsort.so sorter
 
-create_file: libfilegen.so
-	$(CC) -L$(SHARED_LIB_PATH) -l filegen create_file.cc -o create_file
-
-sorter: libsort.so libfilegen.so main.cc
-	$(CC)  $(CFLAGS) -L$(SHARED_LIB_PATH) -lsort -lfilegen main.cc -o sorter
-		
-libfilegen.so: file_gen.cc file_gen.h
-	$(CC) $(CFLAGS) -fPIC -shared -o libfilegen.so file_gen.cc
+sorter: libsort.so  main.cc sort_api.h
+	$(CC)  $(CFLAGS) -L$(SHARED_LIB_PATH) -lsort main.cc -o sorter
 
 sort.o: sort.cc sort_api.h
 	$(CC) $(CFLAGS) -fPIC -c -o sort.o sort.cc
@@ -30,6 +24,5 @@ bubble_sort.o: bubble_sort.cc sort_api.h
 libsort.so: $(SORT_OBJS)
 	$(CC) -fPIC -shared $(SORT_OBJS) -o libsort.so
 
-	
 clean:
-	rm -f $(OBJS) libfilegen.so libsort.so sorter create_file *.o core*
+	rm -f $(OBJS) libsort.so sorter *.o core*

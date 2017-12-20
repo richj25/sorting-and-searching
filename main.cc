@@ -42,6 +42,20 @@ void createRandomList(int size, Container& randomList)
 	}
 }
 
+void checkSort(Container list, int& numErrors)
+{
+	numErrors = 0;
+	Container::iterator iter = list.begin();
+	Container::iterator iter2 = iter + 1;
+	for (; iter2 != list.end(); iter++, iter2++)
+	{
+		if (*iter > *iter2)
+		{
+			numErrors++;
+		}
+	}
+}
+
 int main(int argc, char **argv)
 {
 	std::list<int> randomList;
@@ -67,11 +81,19 @@ int main(int argc, char **argv)
 	while (methodNumber != 0)
 	{
 		double elapsedTime;
+		int numErrors = 0;
 
 		Container randomList;
 		createRandomList(listSize, randomList);
 
 		callSortMethod(methodMap[methodNumber], randomList, elapsedTime);
+
+		checkSort(randomList, numErrors);
+
+		if (numErrors != 0)
+		{
+			std::cout << "Number of sort errors: " << numErrors << std::endl;
+		}
 
 		std::cout << "Sort method - " << methodMap[methodNumber] << std::endl;
 		std::cout << "Sorted " << listSize << " integers in " << elapsedTime << "seconds." << std::endl;
