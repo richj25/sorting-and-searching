@@ -12,27 +12,35 @@ void printList(const Container& list)
 
 void qSort(Container& list, Container::iterator pivot, Container::iterator leftMark, Container::iterator rightMark)
 {
-	while (rightMark >= leftMark)
+	Container::iterator saveRightMark = rightMark;
+
+	if (leftMark != rightMark)
 	{
-		if (*leftMark < *pivot)
+		while (rightMark >= leftMark)
 		{
-			leftMark++;
+			if (*leftMark < *pivot)
+			{
+				leftMark++;
+			}
+
+			if (*rightMark > *pivot)
+			{
+				rightMark--;
+			}
+
+			if (rightMark < leftMark)
+			{
+				std::swap(*pivot, *rightMark);
+			}
+
+			if ((*leftMark >=*pivot) && (*rightMark < *pivot))
+			{
+				std::swap(*leftMark, *rightMark);
+			}
 		}
 
-		if (*rightMark > *pivot)
-		{
-			rightMark--;
-		}
-
-		if (rightMark < leftMark)
-		{
-			std::swap(*pivot, *rightMark);
-		}
-
-		if ((*leftMark >=*pivot) && (*rightMark < *pivot))
-		{
-			std::swap(*leftMark, *rightMark);
-		}
+		qSort(list, pivot, pivot + 1, rightMark - 1);
+		qSort(list, leftMark, leftMark + 1, saveRightMark);
 	}
 }
 
