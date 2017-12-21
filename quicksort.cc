@@ -10,45 +10,50 @@ void printList(const Container& list)
 	}
 }
 
-void qSort(Container& list, Container::iterator pivot, Container::iterator leftMark, Container::iterator rightMark)
+void qSort(Container& list, int left, int right)
 {
-	Container::iterator saveRightMark = rightMark;
+	int high = right;
+	int low = left;
+	int tmp;
+	int pivot = list[(low + high) / 2];
 
-	if (leftMark != rightMark)
+	while (low <= high)
 	{
-		while (rightMark >= leftMark)
+		while (list[low] < pivot)
 		{
-			if (*leftMark < *pivot)
-			{
-				leftMark++;
-			}
-
-			if (*rightMark > *pivot)
-			{
-				rightMark--;
-			}
-
-			if (rightMark < leftMark)
-			{
-				std::swap(*pivot, *rightMark);
-			}
-
-			if ((*leftMark >=*pivot) && (*rightMark < *pivot))
-			{
-				std::swap(*leftMark, *rightMark);
-			}
+			low++;
 		}
 
-		qSort(list, pivot, pivot + 1, rightMark - 1);
-		qSort(list, leftMark, leftMark + 1, saveRightMark);
+		while (list[high] > pivot)
+		{
+			high--;
+		}
+
+		if (low <= high)
+		{
+			tmp = list[low];
+			list[low] = list[high];
+			list[high] = tmp;
+			low++;
+			high--;
+		}
+	}
+
+	if (left < high)
+	{
+		qSort(list, left, high);
+	}
+
+	if (low < right)
+	{
+		qSort(list, low, right);
 	}
 }
 
 void quickSort(Container& list)
 {
-	Container::iterator pivot = list.begin();
-	Container::iterator rightMark = list.end() - 1;
-	Container::iterator leftMark = pivot + 1;;
+	int left = 0;
+	int right = list.size() -1;
 
-	qSort(list, pivot, leftMark, rightMark);
+	qSort(list, left, right);
 }

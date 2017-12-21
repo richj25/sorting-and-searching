@@ -1,6 +1,6 @@
 CC=/usr/bin/g++
 LD=/usr/bin/ld
-CFLAGS= -g -std=c++11 -Wall
+CFLAGS= -O2 -std=c++11 -Wall
 SHARED_LIB_PATH=$(CURDIR)
 
 SORT_OBJS = bubble_sort.o \
