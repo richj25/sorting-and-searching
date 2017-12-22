@@ -8,8 +8,6 @@
 #include "sort.h"
 #include "sort_api.h"
 
-#include "utilities.cc"
-
 void selectionSort(Container &list)
 {
 	Container::iterator iter1 = list.begin();
@@ -23,12 +21,9 @@ void selectionSort(Container &list)
 			{
 				lowest = iter2;
 			}
-			std::swap(*iter1, *lowest);
 		}
-		printList(list);
+		std::swap(*iter1, *lowest);
 	}
-
-
 }
 
 
