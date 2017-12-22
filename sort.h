@@ -9,4 +9,6 @@ void bubbleSort(Container& list);
 
 void quickSort(Container& list);
 
+void selectionSort(Container& list);
+
 #endif /* SORT_H */

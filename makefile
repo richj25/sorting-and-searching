@@ -5,6 +5,7 @@ SHARED_LIB_PATH=$(CURDIR)
 
 SORT_OBJS = bubble_sort.o \
 			quicksort.o \
+			selection_sort.o \
 			sort.o
 
 all: libsort.so sorter
@@ -21,6 +22,9 @@ quicksort.o: quicksort.cc sort_api.h
 bubble_sort.o: bubble_sort.cc sort_api.h
 	$(CC) $(CFLAGS) -fPIC -c -o bubble_sort.o bubble_sort.cc
 
+selection_sort.o: selection_sort.cc sort_api.h
+	$(CC) $(CFLAGS) -fPIC -c -o selection_sort.o selection_sort.cc
+	
 libsort.so: $(SORT_OBJS)
 	$(CC) -fPIC -shared $(SORT_OBJS) -o libsort.so
 

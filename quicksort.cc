@@ -1,14 +1,5 @@
 #include "sort_api.h"
-#include <iostream>
-
-void printList(const Container& list)
-{
-	Container::const_iterator iter = list.begin();
-	for (; iter != list.end(); iter++)
-	{
-		std::cout << *iter << std::endl;
-	}
-}
+#include "sort.h"
 
 void qSort(Container& list, int left, int right)
 {
